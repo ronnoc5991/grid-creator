@@ -1,0 +1,73 @@
+{
+  "name": "grid-maker",
+  "devDependencies": {
+    "@pota/cli": "^1.0.1",
+    "@pota/react-skeleton": "^2.1.0"
+  },
+  "type": "module",
+  "scripts": {
+    "typecheck": "run-s typecheck:*",
+    "fix": "run-s fix:* && npm run format",
+    "fix:eslint": "npm run lint:eslint -- --fix",
+    "format": "prettier \"**/*.{js,jsx,ts,tsx,scss,md,json}\" --write --loglevel warn",
+    "lint": "run-s lint:*",
+    "lint:eslint": "eslint . --ext .ts,.tsx --cache --cache-location node_modules/.cache/.eslintcache",
+    "rsync": "cross-env rsync -avPx dist/* ${npm_package_name}@${npm_package_config_host}:~/public/ --delete",
+    "postinstall": "npx patch-package",
+    "build-storybook": "build-storybook",
+    "plop": "TS_NODE_PROJECT=tsconfig.tools.json node --loader ts-node/esm ./scripts/plop.ts",
+    "start-storybook": "start-storybook -p 9001",
+    "test": "jest --config ./test-utils/jest.config.ts",
+    "typecheck:main": "tsc --project tsconfig.json --noEmit --noUnusedLocals",
+    "typecheck:tools": "tsc --project tsconfig.tools.json --noEmit --noUnusedLocals",
+    "build": "pota build",
+    "dev": "pota dev",
+    "prepare": "husky install"
+  },
+  "config": {
+    "host": "TODO: Add a host name."
+  },
+  "browserslist": [
+    "last 2 versions",
+    "not ie <= 11, not ie_mob <= 11",
+    "not dead"
+  ],
+  "prettier": "@mediamonks/prettier-config",
+  "engines": {
+    "node": ">=16",
+    "npm": ">=7",
+    "yarn": "unsupported"
+  },
+  "dependencies": {
+    "@mediamonks/eslint-config-base": "^2.0.0",
+    "husky": "^7.0.0",
+    "lint-staged": "^12.3.1",
+    "@mediamonks/eslint-config-react": "^2.0.0-rc.1",
+    "@pota/webpack-skeleton": "^2.1.0",
+    "@types/react-dom": "^17.0.11",
+    "@types/react": "^17.0.34",
+    "react-dom": "^17.0.2",
+    "react-refresh": "^0.10.0",
+    "react": "^17.0.2",
+    "web-vitals": "^2.1.1",
+    "@pota/react-base-skeleton": "^2.1.0",
+    "@testing-library/jest-dom": "^5.15.0",
+    "@testing-library/react": "^12.1.2",
+    "@testing-library/user-event": "^13.5.0",
+    "@storybook/react": "^6.3.12",
+    "@types/minimist": "^1.2.2",
+    "@types/jest": "^27.0.2",
+    "@types/styled-components": "^5.1.15",
+    "isntnt": "^1.5.2",
+    "jest": "^27.3.1",
+    "mobx": "^6.3.7",
+    "mobx-react-lite": "^3.2.2",
+    "plop": "^3.0.5",
+    "polished": "^4.1.3",
+    "react-router": "^6.0.1",
+    "react-router-dom": "^6.0.1",
+    "styled-components": "^5.3.3",
+    "ts-jest": "^27.0.7",
+    "ts-node": "^10.4.0"
+  }
+}
